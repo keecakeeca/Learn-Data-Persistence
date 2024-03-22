@@ -15,17 +15,15 @@ public class MainMenuListeners : MonoBehaviour
 
     public void StartGame()
     {
-        PersistenceManager.Instance.SetPlayerName(_textInput.text);
+        PersistenceManager.Instance.CurrentName = _textInput.text;
 
         SceneManager.LoadScene("main");
     }
 
     private void Start()
     {
-        // TODO: fetch persistence data from disk
-        // and make button interactable whether player name length >= 2
-
-        _startButton.interactable = false;
+        _textInput.text = PersistenceManager.Instance.CurrentName;
+        InputValueChanged(_textInput.text);
     }
 
 }
